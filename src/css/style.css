@@ -1,0 +1,16 @@
+* {
+    box-sizing: border-box;
+  }
+body {
+    font-family: 'Poppins', sans-serif;
+    color: #000000CC;
+  }
+
+  .root {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #FFFFFF;  
+    min-height: 100vh;
+   }
