@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ButtonGit from "../../components/ButtonGitHub/ButtonGitHub";
 import DividerOr from "../../components/Divider/Divider";
 import Buttom from "../../components/FooterForm/Buttom";
@@ -9,16 +9,38 @@ import Header from "../../components/Header/Header";
 import Input from "../../components/Input/Input";
 import Title from "../../components/Title/Title";
 import { useNavigate } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
+import api from "../../services/api";
 
 
 function SignIn() {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const navigate= useNavigate();
+    const [formData, setFormData] = useState({ email: '', password: '' });
+    const { auth, login } = useAuth();
+    const navigate = useNavigate();
 
-    function handleSignUp(){
-        navigate("/signUp")
+    useEffect(() => {
+        if (auth && auth.token) {
+            navigate("/tests");
+        }
+    }, [])
+
+    function handleChange(e) {
+        setFormData({ ...formData, [e.target.name]: e.target.value })
     }
+    async function handleSubmit(e) {
+        e.preventDefault();
+        const user = { ...formData };
+        console.log("userLogin",user);
+        try {
+            const {data} = await api.login(user);
+            login(data);
+            navigate('/tests');
+        } catch (error) {
+            console.log(error);
+            alert("Erro, tente novamente");
+        }
+    }
+   
 
     return (
         <>
@@ -26,19 +48,24 @@ function SignIn() {
             <Title>Login</Title>
             <ButtonGit>Entrar com gitHub</ButtonGit>
             <DividerOr />
-            <Form>
+            <Form onSubmit={handleSubmit}>
                 <Input
-                    label="Email"
-                    Value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                     type="email"
+                     label="Email"
+                     name="email"
+                     Value={formData.email}
+                     onChange={(e) => handleChange(e)}
                 />
                 <Input
+                    type="password"
                     label="Senha"
-                    Value={password}
+                    name="password"
+                    Value={formData.password}
+                    onChange={(e) => handleChange(e)}
                 />
                 <FooterForm>
                     <LinkFooter to="/signUp">Não possuo cadastro</LinkFooter>
-                    <Buttom>Entrar</Buttom>
+                    <Buttom type="submit">Entrar</Buttom>
                 </FooterForm>
             </Form>
         </>

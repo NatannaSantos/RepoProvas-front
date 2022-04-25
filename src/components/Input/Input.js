@@ -6,14 +6,19 @@ const styles = {
     
     };
 
-export default function Input({label,value}){
+export default function Input({type,label,name,value,onChange}){
+    console.log("value",value)
 
     return(
         <TextField
+        type={type}
         sx={styles}          
         label={label}
+        name={name}
         variant="outlined"
-        value={value}         
+        value={value} 
+        onChange={onChange}        
+        required
     />
 );
 }

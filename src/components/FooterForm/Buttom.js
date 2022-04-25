@@ -5,8 +5,8 @@ const style={
     fontSize:"14px"
 }
 
-export default function Buttom({children}){
+export default function Buttom({type,children}){
     return(
-        <Button variant='contained' sx={style}>{children}</Button>
+        <Button type={type} variant='contained' sx={style}>{children}</Button>
     );
 }

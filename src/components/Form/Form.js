@@ -9,9 +9,9 @@ const styles={
     gap: "10px",
    }
 
-export default function Form({children}){
+export default function Form({onSubmit,children}){
     return(
-        <Box component="form" sx={styles}>
+        <Box onSubmit={onSubmit} component="form" sx={styles}>
             {children}
         </Box>
     );
