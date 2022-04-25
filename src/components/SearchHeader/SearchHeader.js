@@ -5,13 +5,12 @@ const styles={
     width:"464px"
 }
 
-export default function SearchHeader({label,value}){
+export default function SearchHeader({select}){
     return(
         <TextField
-        sx={styles}          
-        label={label}
-        variant="outlined"
-        value={value}         
+        sx={styles}       
+        variant="outlined"       
+        placeholder={select==="Pessoa instrutora"? "Pesquise por pessoa instrutora":"Pesquise por disciplina"}        
     />
 );
 }

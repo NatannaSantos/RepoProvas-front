@@ -26,8 +26,7 @@ function SignUp() {
     
       async function handleSubmit(e) {
         e.preventDefault();
-        console.log("password",formData.password)
-    
+            
         if (formData.password !== formData.confirmPassword) {
           alert("Senha inválida");
           return;
@@ -44,7 +43,7 @@ function SignUp() {
           alert("Erro, tente novamente");
         }
       }
-    console.log("formData",formData);
+    
    return (
         <>
             <Header></Header>

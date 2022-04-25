@@ -6,7 +6,6 @@ display: flex;
 justify-content:${props=> props.isTests?"space-between" : "center"};
 align-items: center;
 padding: 10px;
-position: fixed;
 top:0;
 `
 const Image = styled.img`
