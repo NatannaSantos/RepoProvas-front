@@ -17,6 +17,7 @@ export default function ListTest({ discipline }) {
         color:"#8D8D8D"
     }
     
+    console.log("discipline",discipline);
     return (
         <List component="div" disablePadding>
             <ListItemButton sx={{ pl: 4 }} onClick={() => handleClick()}>
@@ -30,7 +31,7 @@ export default function ListTest({ discipline }) {
                         <List component="div" disablePadding>
                             <ListItemButton sx={{ pl: 6 }}>                                
                                 <ListItemText>{unic.category.name}
-                                <Typography  sx={styleTypography} variant="body2">{unic.name}-{unic.teacherDiscipline.teacher.name}</Typography>
+                                <Typography  sx={styleTypography} variant="body2">{unic.name}-{discipline.teacher.name}</Typography>
                                 </ListItemText>
                             </ListItemButton>
                         </List>
