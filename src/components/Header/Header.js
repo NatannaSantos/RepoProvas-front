@@ -7,7 +7,8 @@ import { useNavigate } from "react-router-dom";
 
 const style={
     width:"32px",
-    height:"36px"
+    height:"36px",
+    cursor:"pointer"
 }
 
 function Header({isTests}){

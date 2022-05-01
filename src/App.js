@@ -1,6 +1,7 @@
 import React from "react";
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import { AuthProvider } from "./contexts/AuthContext";
+import CreateTest from "./pages/CreateTest/CreateTest";
 import SignIn from "./pages/SignIn/SignIn";
 import SignUp from "./pages/SignUp/Signup";
 import Tests from "./pages/Tests/Tests";
@@ -16,6 +17,7 @@ function App() {
                     <Route path="/signUp" element={<SignUp />} />
                     <Route path="/tests" element={<Tests />} />
                     <Route path="/tests/teacher" element= {<TestsTeacher />} />
+                    <Route path="/tests/create" element={<CreateTest/>} />
                 </Routes>
             </BrowserRouter>
         </AuthProvider>

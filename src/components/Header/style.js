@@ -5,7 +5,10 @@ width: 100%;
 display: flex;
 justify-content:${props=> props.isTests?"space-between" : "center"};
 align-items: center;
-padding: 10px;
+padding-right:10px;
+padding-left:10px;
+padding-top: 10px;
+padding-bottom:100px;
 top:0;
 `
 const Image = styled.img`

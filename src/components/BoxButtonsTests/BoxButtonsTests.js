@@ -6,26 +6,32 @@ const style={
     width:"464px",    
     display:"flex",
     justifyContent:"space-between",
-    marginTop:"25px"
+    marginTop:"25px",
+    marginBottom:"25px"
 }
-export function BoxButtonsTests({select,setSelect}){
+
+export function BoxButtonsTests({select}){
+    console.log("selectBottom",select);
+  
     const navigate = useNavigate();
     
-    function handleSelect(props){
-        setSelect(props);
+    function handleSelectDiscipline(){
         navigate("/tests");
         
     }
 
-    function handleSelectInstructor(props){
-        setSelect(props);
+    function handleSelectInstructor(){
         navigate("/tests/teacher");
+    }
+
+    function handleCreateTest(){
+        navigate("/tests/create");
     }
     return(
         <Box sx={style}>
-            <Button onClick={()=>handleSelect("Disciplinas")} variant={select=== "Disciplinas"?"contained": "outlined"} >Disciplinas</Button>
-            <Button onClick={()=>handleSelectInstructor("Pessoa instrutora")} variant={select=== "Pessoa instrutora"?"contained": "outlined"}>Pessoa instrutora</Button>
-            <Button variant="outlined">Adicionar</Button>
+            <Button variant={select=== "Disciplinas"? "contained": "outlined"} onClick={()=>handleSelectDiscipline()}  >Disciplinas</Button>
+            <Button variant={select=== "Pessoa instrutora"?"contained": "outlined"} onClick={()=>handleSelectInstructor()} >Pessoa instrutora</Button>
+            <Button variant={select === "Adicionar"?"contained":"outlined"} onClick={()=>handleCreateTest()}>Adicionar</Button>
         </Box>
     );
 }

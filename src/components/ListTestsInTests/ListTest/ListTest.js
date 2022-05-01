@@ -1,6 +1,6 @@
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
-import { Collapse, List, ListItemButton, ListItemText } from "@mui/material";
+import { Collapse, List, ListItemButton, ListItemText, Typography } from "@mui/material";
 import { useState } from "react";
 
 
@@ -12,6 +12,10 @@ export default function ListTest({ discipline }) {
         setOpen(!open);
         console.log("disciplineId", discipline.id);
     };
+
+    const styleTypography={
+        color:"#8D8D8D"
+    }
     
     return (
         <List component="div" disablePadding>
@@ -24,8 +28,9 @@ export default function ListTest({ discipline }) {
                 {discipline.teacherDiscipline.map((discipline) => (
                     discipline.test.map((unic) => (                    
                         <List component="div" disablePadding>
-                            <ListItemButton sx={{ pl: 6 }}>
-                                <ListItemText>{unic.category.name}-{unic.name}-{unic.teacherDiscipline.teacher.name}
+                            <ListItemButton sx={{ pl: 6 }}>                                
+                                <ListItemText>{unic.category.name}
+                                <Typography  sx={styleTypography} variant="body2">{unic.name}-{unic.teacherDiscipline.teacher.name}</Typography>
                                 </ListItemText>
                             </ListItemButton>
                         </List>

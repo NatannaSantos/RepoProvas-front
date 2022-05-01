@@ -20,7 +20,7 @@ export default function ListTests({termName,termDiscipline}) {
   
   return (
     <List
-      sx={{ width: '100%', maxWidth: 464, bgcolor: 'background.paper' }}
+      sx={{ width: '100%', maxWidth: 464, bgcolor: 'background.paper',color:'#000000',fontWeight:'bold'}}
       component="nav"
       aria-labelledby="nested-list-subheader"
     >     

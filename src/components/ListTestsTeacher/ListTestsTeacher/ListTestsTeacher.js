@@ -14,7 +14,7 @@ export default function ListTestsTeacher({ termName, termDisciplines }) {
 
 
   console.log("termDisciplines", termDisciplines);
-
+  
 
   const handleClick = () => {
     setOpen(!open);
@@ -32,7 +32,7 @@ export default function ListTestsTeacher({ termName, termDisciplines }) {
       </ListItemButton>
       <Collapse in={open} timeout="auto" unmountOnExit>
         {termDisciplines.map((discipline) => (
-                <ListTestTeacher open={open} discipline={discipline} /> 
+                <ListTestTeacher open={open} discipline={discipline} />                 
           
         ))}
       </Collapse>

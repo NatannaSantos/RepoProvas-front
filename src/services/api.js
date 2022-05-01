@@ -30,12 +30,19 @@ async function getDisciplinesByTeacher(token){
     return discipline;
 }
 
+async function getCategories(token){
+    const config=createConfig(token);
+    const category = await axios.get(`${BASE_URL}/tests/categories`,config);
+    return category;
+}
+
 const api={
     login,
     createUser,
     getUser,
     getDisciplinesByTerms,
-    getDisciplinesByTeacher
+    getDisciplinesByTeacher,
+    getCategories
 }
 
 export default api;
