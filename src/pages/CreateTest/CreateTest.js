@@ -15,18 +15,26 @@ export default function CreateTest() {
     const [isTests, setIsTests] = useState(false);
     const [select, setSelect] = useState("");
     const [categories, setCategories] = useState([]);
+    const [disciplineData,setDisciplineData] = useState([]);
     const [testData, setTestData] = useState({ name: '', pdfUrl: '', categoryId: '',discipline:'',teacher:''});
     const { auth } = useAuth();
 
     useEffect(() => {
-        const promise = api.getCategories(auth.token);
-        promise.then((response) => {
+        const discipline = api.getDisciplines(auth.token)
+        discipline.then((response)=>{
+            setDisciplineData(response.data)
+        })
+        discipline.catch((error)=>{
+            console.log(error);
+        })
+        const categories = api.getCategories(auth.token);
+        categories.then((response) => {
             setIsTests(true);
             setSelect("Adicionar");
             console.log("response", response.data);
             setCategories(response.data);
         })
-        promise.catch((error) => {
+        categories.catch((error) => {
             console.log(error);
         })
     }, []);
@@ -111,7 +119,7 @@ export default function CreateTest() {
                     sx={styleInput}
 
                 >
-                    {categories.map((option) => (
+                    {disciplineData.map((option) => (
                         <MenuItem key={option.id} value={option.name}>
                             {console.log("option", option)}
                             {option.name}

@@ -5,6 +5,7 @@ import CreateTest from "./pages/CreateTest/CreateTest";
 import SignIn from "./pages/SignIn/SignIn";
 import SignUp from "./pages/SignUp/Signup";
 import Tests from "./pages/Tests/Tests";
+import TestsByDisciplines from "./pages/TestsByDisciplines/TestsByDisciplines";
 import TestsTeacher from "./pages/TestsTeacher/TestsTeacher";
 
 
@@ -18,6 +19,7 @@ function App() {
                     <Route path="/tests" element={<Tests />} />
                     <Route path="/tests/teacher" element= {<TestsTeacher />} />
                     <Route path="/tests/create" element={<CreateTest/>} />
+                    <Route path="/tests/discipline/:discipline" element={<TestsByDisciplines/>} />
                 </Routes>
             </BrowserRouter>
         </AuthProvider>

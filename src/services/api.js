@@ -36,13 +36,25 @@ async function getCategories(token){
     return category;
 }
 
+async function getDisciplines(token){
+    const config = createConfig(token);
+    const discipline = await axios.get(`${BASE_URL}/disciplines`,config);
+    return discipline;
+}
+async function countViews(id){
+    const views = await axios.put(`${BASE_URL}/countViews/${id}`);
+    return views;
+}
+
 const api={
     login,
     createUser,
     getUser,
     getDisciplinesByTerms,
     getDisciplinesByTeacher,
-    getCategories
+    getCategories,
+    getDisciplines,
+    countViews
 }
 
 export default api;
