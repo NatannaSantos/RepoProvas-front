@@ -1,5 +1,6 @@
-import {  List, ListItemButton, ListItemText, Typography } from "@mui/material";
+import {  Link, List, ListItemButton, ListItemText, Typography } from "@mui/material";
 import { useState } from "react";
+import api from "../../../services/api";
 
 
 export default function ListTestTeacher({ discipline }) {
@@ -12,7 +13,17 @@ export default function ListTestTeacher({ discipline }) {
     const styleTypography={
         color:"#8D8D8D"
     }
-    console.log("discipline",discipline);
+    async function handleCountViews(id){
+        console.log("id",id)
+        try{
+         await api.countViews(id);
+        }
+        catch(error){
+         console.log(error);
+        }
+        
+     }
+    console.log("discipline Teacher",discipline);
 
        
     return (
@@ -23,6 +34,8 @@ export default function ListTestTeacher({ discipline }) {
                <ListItemText>{disciplines.category.name}
                    {console.log("disciplineDentro",disciplines.category)}
                <Typography sx={styleTypography} variant="body2">{`${disciplines.name} (${discipline.discipline.name}) `}</Typography>
+               <Link href={disciplines.pdfUrl} onClick={()=>handleCountViews(disciplines.id)}>{disciplines.pdfUrl}</Link>
+               <Typography sx={styleTypography}>visualizações:{disciplines.viewsCount}</Typography>
                </ListItemText>
                </ListItemButton>
                ))} 

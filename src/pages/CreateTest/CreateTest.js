@@ -15,16 +15,16 @@ export default function CreateTest() {
     const [isTests, setIsTests] = useState(false);
     const [select, setSelect] = useState("");
     const [categories, setCategories] = useState([]);
-    const [disciplineData,setDisciplineData] = useState([]);
-    const [testData, setTestData] = useState({ name: '', pdfUrl: '', categoryId: '',discipline:'',teacher:''});
+    const [disciplineData, setDisciplineData] = useState([]);
+    const [testData, setTestData] = useState({ name: '', pdfUrl: '', categoryId: '', discipline: '', teacher: '' });
     const { auth } = useAuth();
 
     useEffect(() => {
         const discipline = api.getDisciplines(auth.token)
-        discipline.then((response)=>{
+        discipline.then((response) => {
             setDisciplineData(response.data)
         })
-        discipline.catch((error)=>{
+        discipline.catch((error) => {
             console.log(error);
         })
         const categories = api.getCategories(auth.token);
@@ -52,11 +52,8 @@ export default function CreateTest() {
         width: "464px"
     }
     const styleButtom = {
-        width:"464px"
+        width: "464px"
     }
-
-
-
 
 
     const handleChange = (event) => {
@@ -65,7 +62,9 @@ export default function CreateTest() {
 
     console.log("categories", categories);
 
-
+   function handleTeacherByDisciline(name){
+    console.log("name",name)
+   }
 
 
     return (
@@ -84,25 +83,26 @@ export default function CreateTest() {
                     value={testData.name}
                     sx={styleInput}
                 >
-                   <Typography>Título da prova</Typography>
+                    <Typography>Título da prova</Typography>
                 </TextField>
                 <TextField
                     label="PDF da prova"
                     value={testData.pdfUrl}
                     sx={styleInput}
                 >
-                   <Typography>PDF da prova</Typography>
+                    <Typography>PDF da prova</Typography>
                 </TextField>
 
                 <TextField
                     id="outlined-select-currency"
                     select
                     label="Categoria"
-                    value={testData.categoryId}
+                    value={categories.name}
                     onChange={handleChange}
                     sx={styleInput}
 
                 >
+
                     {categories.map((option) => (
                         <MenuItem key={option.id} value={option.name}>
                             {console.log("option", option)}
@@ -114,15 +114,14 @@ export default function CreateTest() {
                     id="outlined-select-currency"
                     select
                     label="Disciplina"
-                    value={testData.discipline}
+                    value={disciplineData.name}
                     onChange={handleChange}
                     sx={styleInput}
 
                 >
                     {disciplineData.map((option) => (
                         <MenuItem key={option.id} value={option.name}>
-                            {console.log("option", option)}
-                            {option.name}
+                            {option.name} 
                         </MenuItem>
                     ))}
                 </TextField>
